@@ -10,6 +10,7 @@ module Arbitrary =
     open System.Globalization
     open System.Collections.Generic
     open System.Net
+    open System.Net.Mail
     open Helpers
     open Arb
     open Swensen.Unquote
@@ -426,6 +427,10 @@ module Arbitrary =
     [<Fact>]
     let IPAddress () =
         generate<IPAddress> |> sample 10 |> ignore
+
+    [<Fact>]
+    let MailAddress () =
+        generate<MailAddress> |> sample 10 |> ignore
 
     [<Property>]
     let ``IPAddress shrinks`` (value: IPAddress) =
